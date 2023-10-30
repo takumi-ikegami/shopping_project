@@ -1,0 +1,65 @@
+@use "../../lib" as l;
+
+.bl_login {
+  &_list {
+    padding-top: 20px;
+  }
+  &_loginWrap {
+    padding-top: 50px;
+  }
+  &_login {
+    border: 1px solid l.$cShadow;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 500px;
+  }
+  &_listItem {
+    padding-bottom: 20px;
+    &:nth-last-of-type(2) {
+      padding-bottom: 40px;
+    }
+  }
+  &_text {
+    font-size: l.$baseSize;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    padding-bottom: 10px;
+  }
+  &_input {
+    border: 1px solid l.$cShadow;
+  }
+  &_btn {
+    font-size: l.$baseSize;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    margin: 0 auto;
+    display: block;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid l.$cShadow;
+    &:hover {
+      color: l.$cMain;
+      background-color: l.$cShadow;
+    }
+  }
+}
+
+@include l.break_sp {
+  .bl_login {
+    &_login {
+      max-width: 500px;
+      width: 100%;
+    }
+    &_btn {
+      max-width: 150px;
+      width: 100%;
+    }
+    &_input {
+      max-width: 200px;
+      width: 100%;
+    }
+  }
+}

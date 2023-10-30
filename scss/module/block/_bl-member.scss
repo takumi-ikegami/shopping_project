@@ -1,0 +1,47 @@
+@use "../../lib" as l;
+
+.bl_member {
+  &_titleText {
+    font-size: l.$upFont;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+  &_main {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  &_contents {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  &_subTitle {
+    font-size: l.$upFont2;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    padding-bottom: 10px;
+  }
+  &_text {
+    font-size: l.$baseFont;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    padding-bottom: 5px;
+  }
+  &_btn {
+    font-size: l.$baseFont;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    &:hover {
+      color: l.$cShadow;
+    }
+  }
+  &_moveBtn {
+    padding-bottom: 20px;
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+}

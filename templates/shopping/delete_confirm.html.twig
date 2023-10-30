@@ -1,0 +1,26 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_delete">
+        <form class="bl_delete ly_delete_inner" action="delete_confirm.php" method="post">
+            <div class="bl_delete_title">
+                <h1 class="bl_delete_titleText">会員登録情報</h1>
+            </div>
+            <p class="bl_delete_text">退会について、変更は出来ません。本当によろしいですか。</p>
+            <p class="bl_delete_text">※退会後の復旧については、1ヶ月以内のみ可能です</p>
+            </table>
+            <div>
+                <p class="bl_delete_textBox"><input class="bl_delete_btn" type="submit" name="back" value="戻る"></p>
+                <p class="bl_delete_textBox"><input class="bl_delete_btn" type="submit" name="complete" value="退会"></p>
+                {% for key,value in dataArr %}
+                    {# iterable 配列かどうか #}
+                    {% if value is iterable %}
+                        {% for v in value %}
+                            <input type="hidden" name="{{key}}[]" value="{{v}}">
+                        {% endfor %}
+                    {% else %}
+                        <input type="hidden" name="{{key}}" value="{{value}}">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </form>
+    </section>
+{% include 'templates/footer.html.twig' %}

@@ -1,0 +1,9 @@
+@use "../lib" as l;
+
+@include l.break_sp {
+  .js_cate {
+    &_listContainer.is_active {
+      height: 400px;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "../../lib" as l;
+
+.el_cate {
+  width: 240px;
+  text-align: center;
+  margin-bottom: 60px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &_img {
+    height: 64px;
+  }
+
+  &_text {
+    padding-top: 15px;
+    font-size: l.$baseSize;
+    color: l.$cFont;
+    font-family: l.$baseFont;
+  }
+}

@@ -1,0 +1,45 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_member">
+        <div class="bl_member ly_member_inner">
+            <div class="bl_member_title">
+                <h1 class="bl_member_titleText">会員登録情報</h1>
+            </div>
+            <div class="bl_member_main">
+                <div class="bl_member_contents">
+                    <p class="bl_member_subTitle">ユーザーネーム</p>
+                    <p class="bl_member_text">{{dataArr.user_name}}</p>
+                    <p><a class="bl_member_btn" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}change.php?change_contents=user">ユーザーIDの変更</a></p>
+                </div>
+                <div class="bl_member_contents">
+                    <p class="bl_member_subTitle">パスワード</p>
+                    <p class="bl_member_text">{{dataArr.user_pass}}</p>
+                    <p><a class="bl_member_btn" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}change.php?change_contents=password">パスワードの変更</a></p>
+                </div>
+                <div class="bl_member_contents">
+                    <p class="bl_member_subTitle">お名前</p>
+                    <p class="bl_member_text">{{dataArr.family_name}} {{dataArr.first_name}}</p>
+                    <p class="bl_member_text">{{dataArr.family_name_kana}} {{dataArr.first_name_kana}}</p>
+                    <p><a class="bl_member_btn" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}change.php?change_contents=name">お名前の変更</a></p>
+                </div>
+                <div class="bl_member_contents">
+                    <p class="bl_member_subTitle">郵便番号・住所</p>
+                    <p class="bl_member_text">{{dataArr.zip1}}-{{dataArr.zip2}}</p>
+                    <p class="bl_member_text">{{dataArr.address}}</p>
+                    <p><a class="bl_member_btn" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}change.php?change_contents=address">住所の変更</a></p>
+                </div>
+                <div class="bl_member_contents">
+                    <p class="bl_member_subTitle">メールアドレス</p>
+                    <p class="bl_member_text">{{dataArr.email}}</p>
+                    <p><a class="bl_member_btn" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}change.php?change_contents=mail">メールアドレスの変更</a></p>
+                </div>
+                <div class="bl_member_contents">
+                    <p class="bl_member_subTitle">電話番号</p>
+                    <p class="bl_member_text">{{dataArr.tel1}}-{{dataArr.tel2}}-{{dataArr.tel3}}</p>
+                    <p><a class="bl_member_btn" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}change.php?change_contents=tel">電話番号の変更</a></p>
+                </div>
+            </div>
+            <p class="bl_member_moveBtn"><a class="el_btn" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}mypage.php"><span class="el_btn_slide"></span>マイページに戻る</a></p>
+            <p class="bl_member_moveBtn"><a class="el_btn" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}delete.php"><span class="el_btn_slide"></span>退会する</a></p>
+        </div>
+    </section>
+{% include 'templates/footer.html.twig' %}

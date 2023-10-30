@@ -1,0 +1,38 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_regist">
+        <h2 class="el_title"><span class="el_title_main">お問い合わせ</span></h2>
+        <p class="el_title_sub">regist</p>
+        <div class="bl_regist ly_regist_inner">
+            <input type="hidden" name="entry_url" id="entry_url" value="{{constant('shopping\\Bootstrap::ENTRY_URL')}}">
+            <form class="bl_regist_form" action="support_confirm.php" method="post">
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">お問い合わせ内容</span></p>
+                    <div class="bl_regist_inputContainer">
+                        <p>{{dataArr.support}}</p>
+                    </div>
+                </div>
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">連絡先メールアドレス</span></p>
+                    <div class="bl_regist_inputContainer">
+                       <p>{{dataArr.spt_email}}</p>
+                    </div>
+                </div>
+                <div class="bl_regist_btnContainer">
+                    <input class="bl_regist_btn" type="submit" name="back" value="戻る">
+                    <input class="bl_regist_btn" type="submit" name="complete" value="確認">
+                    {% for key,value in dataArr %}
+                        {# iterable 配列かどうか #}
+                        {% if value is iterable %}
+                            {% for v in value %}
+                                <input type="hidden" name="{{key}}[]" value="{{v}}">
+                            {% endfor %}
+                        {% else %}
+                            <input type="hidden" name="{{key}}" value="{{value}}">
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+        <!-- bl_form -->
+    </section>
+{% include 'templates/footer.html.twig' %}

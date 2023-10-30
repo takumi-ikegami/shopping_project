@@ -1,0 +1,60 @@
+@use "../../lib" as l;
+
+.bl_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &_title {
+    font-size: l.$Title;
+    font-family: l.$mainTitle;
+    color: l.$cFont;
+  }
+
+  &_form {
+    padding-top: 20px;
+    position: relative;
+    display: block;
+    width: 500px;
+    margin: 0 auto;
+    &::before {
+      position: absolute;
+      content: url("../img/icon/searchx64.png");
+      display: inline-block;
+      scale: (0.4);
+      left: -50px;
+      top: 0px;
+    }
+  }
+
+  &_textForm {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    border-radius: 5px;
+    height: 30px;
+    border: 1px solid l.$cFont;
+  }
+}
+
+@include l.break_sp {
+  .bl_header {
+    &_sideMenu {
+      display: flex;
+      align-items: center;
+    }
+
+    &_title {
+      font-size: l.$sptitle;
+    }
+
+    &_text {
+      display: none;
+      align-items: center;
+    }
+
+    &_form {
+      width: 70%;
+    }
+  }
+}

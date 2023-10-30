@@ -1,0 +1,22 @@
+@use "../lib" as l;
+
+.ly_cart {
+  padding-top: 237px;
+  padding-bottom: 60px;
+
+  &_inner {
+    @include l.center;
+    padding-top: 40px;
+  }
+}
+
+@include l.break_sp {
+  .ly_cart {
+    padding-top: 237px;
+    padding-bottom: 40px;
+
+    &_inner {
+      padding-top: 20px;
+    }
+  }
+}

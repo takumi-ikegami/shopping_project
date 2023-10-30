@@ -1,0 +1,57 @@
+@use "../../lib" as l;
+
+.bl_delete {
+  text-align: center;
+  &_titleText {
+    font-size: l.$upFont;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+  &_form {
+    text-align: center;
+    padding-bottom: 40px;
+  }
+  &_text {
+    font-size: l.$baseFont;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    padding-bottom: 30px;
+  }
+  &_textBox {
+    padding-bottom: 30px;
+  }
+  &_btn {
+    font-size: l.$baseFont;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    border: 1px solid l.$cFont;
+    padding: 15px 60px 15px 60px;
+    &:hover {
+      color: l.$cShadow;
+    }
+  }
+  &_input {
+    border: 1px solid l.$cFont;
+    border-radius: 3px;
+  }
+  &_inputBox {
+    padding-bottom: 30px;
+  }
+  &_back {
+    text-align: center;
+    &:hover {
+      color: l.$cShadow;
+    }
+  }
+  &_backBtn {
+    font-size: l.$baseFont;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    &:hover {
+      color: l.$cShadow;
+    }
+  }
+}

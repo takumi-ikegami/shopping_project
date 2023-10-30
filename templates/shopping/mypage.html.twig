@@ -1,0 +1,21 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_mypage">
+        <div class="bl_mypage ly_mypage_inner">
+            <h2 class="el_title"><span class="el_title_main">マイページ</span></h2>
+            <p class="el_title_sub">mypage</p>
+            <ul class="bl_mypage_list">
+                <li class="bl_mypage_item"><a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}buyRecord.php"
+                        class="el_btn"><span class="el_btn_slide"></span>注文履歴</a></li>
+                <li class="bl_mypage_item"><a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}member.php"
+                        class="el_btn"><span class="el_btn_slide"></span>登録情報変更・確認</a></li>
+                <li class="bl_mypage_item"><a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}support.php"
+                        class="el_btn"><span class="el_btn_slide"></span>カスタマーサポート</a></li>
+                <li class="bl_mypage_item"><a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}logout.php"
+                        class="el_btn"><span class="el_btn_slide"></span>ログアウト</a></li>
+                <li class="bl_mypage_item"><a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}index.php"
+                        class="el_btn"><span class="el_btn_slide"></span>販売サイトに戻る</a></li>
+            </ul>
+        </div>
+        <!-- bl_mypage -->
+    </section>
+{% include 'templates/footer.html.twig' %}

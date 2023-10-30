@@ -1,0 +1,74 @@
+@use "../../lib" as l;
+
+.bl_detail {
+  &_detail {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 50px;
+  }
+  &_title {
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    font-size: l.$Title;
+    padding-bottom: 10px;
+    border-bottom: 1px solid l.$cShadow;
+  }
+  &_price {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid l.$cShadow;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    font-size: l.$upFont2;
+  }
+  &_text {
+    padding-top: 15px;
+    padding-bottom: 50px;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    font-size: l.$baseSize;
+  }
+  &_img {
+    width: 300px;
+    height: 300px;
+  }
+  &_num {
+    border: 1px solid l.$cShadow;
+    margin-bottom: 50px;
+  }
+  &_info {
+    width: 100%;
+    padding-left: 50px;
+    max-width: 500px;
+  }
+  &_link {
+    display: block;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+    &:hover {
+      color: l.$cShadow;
+    }
+  }
+}
+
+@include l.break_sp {
+  .bl_detail {
+    &_detail {
+      display: block;
+    }
+    &_img {
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+    }
+    &_info {
+      padding-top: 50px;
+      margin: 0 auto;
+      padding-left: 0;
+    }
+  }
+}

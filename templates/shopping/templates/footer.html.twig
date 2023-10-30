@@ -1,0 +1,47 @@
+<button class="el_topBtn js_topBtn">
+        <img class="el_topBtn_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/page_topx64.png" alt="矢印">
+    </button>
+    <footer class="ly_footer bl_footer_bg">
+        <div class="ly_footer_inner bl_footer">
+            <a class="bl_footer_title" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}admin.php">MY HOUSE<br> CREATERS</a>
+            <div class="bl_footer_container">
+                <ul class="bl_footer_list">
+                    <li class="bl_footer_listItem">〒000-0000</li>
+                    <li class="bl_footer_listItem">東京都○○区1-1-1</li>
+                    <li class="bl_footer_listItem">TEL:00-0000-0000</li>
+                </ul>
+                <ul class="bl_footer_list">
+                    <li class="bl_footer_listItem"><a class="bl_footer_link" href="#">会社概要</a></li>
+                    <li class="bl_footer_listItem"><a class="bl_footer_link" href="#">利用規約</a></li>
+                    <li class="bl_footer_listItem"><a class="bl_footer_link" href="#">プライバシーポリシー</a></li>
+                    <li class="bl_footer_listItem"><a class="bl_footer_link" href="#">特定商取引法にまつわる表記</a></li>
+                </ul>
+            </div>
+            <small class="bl_footer_Copyright">&copy;takumi ikegami</small>
+        </div>
+        <!--/.ly_footer_inner-->
+    </footer>
+    <!-- gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    {% if page_id.page == 'front_page' %}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="{{constant('shopping\\Bootstrap::APP_URL')}}js/swiper.js"></script>
+    {% endif %}
+    {% if page_id.page == 'list_page' %}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/alfrcr/paginathing/dist/paginathing.min.js"></script>
+    {% endif %}
+    <script src="{{constant('shopping\\Bootstrap::APP_URL')}}js/nav.js"></script>
+    <script src="{{constant('shopping\\Bootstrap::APP_URL')}}js/page-top.js"></script>
+    <script src="{{constant('shopping\\Bootstrap::APP_URL')}}js/script.js"></script>
+    {% if page_id.page == 'list_page' or page_id.page == 'cart_page' %}
+    <script src="{{constant('shopping\\Bootstrap::APP_URL')}}js/pagenation.js"></script>
+    {% endif %}
+    {% if page_id.page == 'detail_page' or page_id.page == 'cart_page' %}
+    <script src="{{constant('shopping\\Bootstrap::APP_URL')}}js/shopping1.js"></script>
+    {% endif %}
+    {% if page_id.page == 'list_page' or page_id.page == 'detail_page' or page_id.page == 'cart_page' %}
+    <script src="{{constant('shopping\\Bootstrap::APP_URL')}}js/list.js"></script>
+    {% endif %}
+</body>
+
+</html>

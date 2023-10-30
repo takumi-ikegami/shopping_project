@@ -1,0 +1,17 @@
+@use "../lib" as l;
+
+.ly_ranking {
+  padding-top: 60px;
+  padding-bottom: 120px;
+
+  &_inner {
+    @include l.center;
+  }
+}
+
+@include l.break_sp {
+  .ly_ranking {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+}

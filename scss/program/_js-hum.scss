@@ -1,0 +1,25 @@
+@use "../lib" as l;
+
+@include l.break_sp {
+  .js_hum.is_active {
+    & > span {
+      &:first-of-type {
+        transform: translateY(18px) rotate(135deg);
+      }
+
+      &:nth-of-type(2) {
+        transform: scale(0) translateX(20px);
+      }
+
+      &:last-of-type {
+        transform: translateY(-18px) rotate(-135deg);
+      }
+    }
+  }
+  .js_hum {
+    &_listContainer.is_active {
+      right: -100%;
+      transform: translateX(-100%);
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_delete">
+        <div class="bl_delete_title">
+            <h1 class="bl_delete_titleText">会員登録情報</h1>
+        </div>
+        <div class="bl_delete ly_delete_inner">
+            <p class="bl_delete_text">退会時には以下の情報が失われます。<br>お客様の会員データ、購入情報、発送先データ、カート情報。</p>
+            <p class="bl_delete_text">※復旧を希望の場合には1か月以内にご連絡ください。</p>
+            <form class="bl_delete_form" action="{{constant('shopping\\Bootstrap::ENTRY_URL')}}delete_confirm.php" method="post">
+                <p class="bl_delete_text">確認のため、パスワードを入力してください</p>
+                <p class="bl_delete_textBox"><input class="bl_delete_input" type="password" name="user_pass" value="" size="40"></p>
+                {% if message|length > 0 %}<br><span class="red">{{message}}</span>{% endif %}
+                <p class="bl_delete_textBox"><input class="bl_delete_btn" type="submit" name="confirm" value="退会手続"></p>
+            </form>
+            <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}member.php?crt_id={{value.crt_id}}">戻る</a>
+        </div>
+    </section>
+{% include 'templates/footer.html.twig' %}

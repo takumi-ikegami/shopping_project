@@ -1,0 +1,91 @@
+{% include 'templates/headerAdmin.html.twig' %}
+    <section class="ly_detailAd">
+        <div class="bl_detailAd ly_detail_inner">
+            {% if regtext > 0 %}
+            <p>{{regtext}}</p>
+            {% endif %}
+            <input type="hidden" name="entry_url" value="{{constant('shopping\\Bootstrap::ENTRY_URL')}}" id="entry_url">
+            <h2 class="el_title"><span class="el_title_main">商品登録・変更</span></h2>
+            <div class="bl_detailAd_detail">
+                <form class="bl_detailAd_form" action="detailAd.php" method="post" enctype="multipart/form-data">
+                    {% if itemData.item_id > 0 %}
+                    <input type="hidden" name="item_id" value="{{itemData.item_id}}">
+                    {% endif %}
+                    {% if itemData.image > 0 %}
+                    <img class="bl_detailAd_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/{{itemData.image}}" alt="{{itemData.item_name}}">
+                    {% else %}
+                    <img class="bl_detailAd_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/noimagex600.png" alt="仮画像">
+                    {% endif %}
+                    <div class="bl_detailAd_info">
+                        <div class="bl_detailAd_item">
+                            {% if itemData.item_name > 0 %}
+                            <p class="bl_detailAd_text">{{itemData.item_name}}</p>
+                            商品名：<input class="bl_detailAd_input" type="text" maxlength="100" name="item_name" value="{{itemData.item_name}}">
+                            {% else %}
+                            商品名：<input class="bl_detailAd_input" type="text" maxlength="100" name="item_name" value="">
+                            {% endif %}
+                            {% if errArr.item_name|length > 0 %}<p class="bl_detailAd_errmsg">{{errArr.item_name}}</p>{% endif %}
+                        </div>
+                        <div class="bl_detailAd_item">
+                            {% if itemData.detail > 0 %}
+                            <p class="bl_detailAd_text">{{itemData.detail}}</p>
+                            詳細：<input class="bl_detailAd_input" type="text" maxlength="500" name="detail" value="{{itemData.detail}}">
+                            {% else %}
+                            詳細：<input class="bl_detailAd_input" type="text" maxlength="500" name="detail" value="">
+                            {% endif %}
+                            {% if errArr.detail|length > 0 %}<p class="bl_detailAd_errmsg">{{errArr.detail}}</p>{% endif %}
+                        </div>
+                        <div class="bl_detailAd_item">
+                            {% if itemData.price > 0 %}
+                            <p class="bl_detailAd_text">{{itemData.price}}</p>
+                            価格：<input type="text" class="bl_detailAd_input" maxlength="10" name="price" value="{{itemData.price}}">
+                            {% else %}
+                            価格：<input type="text" class="bl_detailAd_input" maxlength="10" name="price" value="">
+                            {% endif %}
+                            {% if errArr.price|length > 0 %}<p class="bl_detailAd_errmsg">{{errArr.price}}</p>{% endif %}
+                        </div>
+                        <div class="bl_detailAd_item">
+                            {% if itemData.image > 0 %}
+                            <p class="bl_detailAd_text">アップロード画像</p>
+                            <input type="file" name="image">
+                            <input type="hidden" name="imageUpd" value="{{itemData.image}}">
+                            {% else %}
+                            <input type="file" name="image">
+                            <input type="hidden" name="image" value="image">
+                            {% endif %}
+                            {% if errArr.image|length > 0 %}<p class="bl_detailAd_errmsg">{{errArr.image}}</p>{% endif %}
+                        </div>
+                        <div class="bl_detailAd_item">
+                            {% if itemData.ctg_id > 0 %}
+                            <p class="bl_detailAd_text">{{itemData.ctg_id}}</p>
+                            カテゴリーid：<input type="text" class="bl_detailAd_input" maxlength="3" name="ctg_id" value="{{itemData.ctg_id}}">
+                            {% else %}
+                            カテゴリーid：<input type="text" class="bl_detailAd_input" maxlength="3" name="ctg_id" value="">
+                            {% endif %}
+                            {% if errArr.ctg_id|length > 0 %}<p class="bl_detailAd_errmsg">{{errArr.ctg_id}}</p>{% endif %}
+                        </div>
+                        <div class="bl_detailAd_item">
+                            {% if itemData.stock > 0 %}
+                            <p class="bl_detailAd_text">{{itemData.stock}}</p>
+                            <input type="hidden" name="stock" value="{{itemData.stock}}">
+                            追加数：<input type="text" class="bl_detailAd_input" maxlength="3" name="add_stock" value="0">個
+                            {% else %}
+                            登録在庫数：<input type="text" class="bl_detailAd_input" maxlength="3" name="add_stock" value="">個
+                            {% endif %}
+                            {% if errArr.stock|length > 0 %}<p class="bl_detailAd_errmsg">{{errArr.stock}}</p>{% endif %}
+                        </div>
+                        <input class="bl_detailAd_link" type="submit" name='item_regist' value="登録">
+                        {% if itemData.item_id > 0 and itemData.delete_flg == 0 %}
+                        <input class="bl_detailAd_link" type="submit" name='item_delete' value="削除">
+                        {% endif %}
+                        {% if itemData.delete_flg == 1 %}
+                        <input type="submit" name='item_Up' value="復旧">
+                        {% endif %}
+                    </div>
+                </form>
+                <a class="bl_detailAd_link" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}itemListAd.php">一覧へ戻る</a>
+            </div>
+        </div>
+        <!-- bl_ranking -->
+    </section>
+{% include 'templates/footerAdmin.html.twig' %}

@@ -1,0 +1,53 @@
+{% include 'templates/headerAdmin.html.twig' %}
+    <section class="ly_listPage">
+        <div class="bl_listPage ly_listPage_inner">
+            <h2 class="el_title"><span class="el_title_main">会員登録情報</span></h2>
+            <p class="el_title_sub">member list</p>
+            {% for value in dataArr %}
+            <div class="bl_listPage_contents">
+                <table class="bl_listPage_table">
+                    <tr>
+                        <th>ユーザーネーム</th>
+                        <td>{{value.user_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>お名前</th>
+                        <td>{{value.family_name}} {{value.first_name}}</td>
+                    </tr>
+                    <tr>
+                        <th>お名前（かな）</th>
+                        <td>{{value.family_name_kana}} {{value.first_name_kana}}</td>
+                    </tr>
+                    <tr>
+                        <th>郵便番号</th>
+                        <td>{{value.zip1}}-{{value.zip2}}</td>
+                    </tr>
+                    <tr>
+                        <th>住所</th>
+                        <td>{{value.address}}</td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td>{{value.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td>{{value.tel1}}-{{value.tel2}}-{{value.tel3}}</td>
+                    </tr>
+                    <tr>
+                        <th>削除履歴</th>
+                        <td>{{value.delete_flg}}</td>
+                    </tr>
+                </table>
+                {% if value.delete_flg == 1 %}
+                <a class="bl_listPage_delete" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}memListAd.php?re_mem_id={{value.mem_id}}">復旧</a>
+                {% elseif value.delete_flg == 0 %}
+                <a class="bl_listPage_delete" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}memListAd.php?del_mem_id={{value.mem_id}}">削除</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <p class="bl_listPage_btn"><a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}memListAd.php?dl_mem=all" class="el_btn"><span class="el_btn_slide"></span>csvダウンロード</a></p>
+            <p class="bl_listPage_btn"><a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}admin.php" class="el_btn"><span class="el_btn_slide"></span>トップページに戻る</a></p>
+        </div>
+    </section>
+{% include 'templates/footerAdmin.html.twig' %}

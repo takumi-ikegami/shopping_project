@@ -1,0 +1,31 @@
+@use "../../lib" as l;
+
+.el_title {
+  font-size: l.$Title;
+  color: l.$cFont;
+  font-family: l.$baseFont;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  &_sub {
+    font-size: l.$baseSize;
+    color: l.$cFont;
+    font-family: l.$baseFont;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:before {
+      content: "";
+      border-top: 1px solid l.$cLine;
+      width: 15px;
+      margin-right: 1em;
+    }
+    &:after {
+      content: "";
+      border-top: 1px solid l.$cLine;
+      width: 15px;
+      margin-left: 1em;
+    }
+  }
+}

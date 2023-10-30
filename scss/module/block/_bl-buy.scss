@@ -1,0 +1,49 @@
+@use "../../lib" as l;
+
+.bl_buy {
+  &_Rec {
+    padding-top: 40px;
+  }
+
+  &_inner {
+    border: 1px solid l.$cShadow;
+    padding: 40px;
+  }
+
+  &_subTitle {
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    font-size: l.$upFont2;
+  }
+  &_item {
+    padding-top: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid l.$cShadow;
+  }
+
+  &_link {
+    display: flex;
+    justify-content: space-around;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &_price {
+    padding-top: 30px;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    font-size: l.$upFont2;
+  }
+
+  &_img {
+    width: 300px;
+  }
+
+  &_text {
+    width: 300px;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    font-size: l.$baseSize;
+  }
+}

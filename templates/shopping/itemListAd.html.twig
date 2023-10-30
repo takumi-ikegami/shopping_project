@@ -1,0 +1,29 @@
+{% include 'templates/headerAdmin.html.twig' %}
+    <section class="ly_list">
+        <div class="bl_list ly_list_inner">
+            {% if ctg_id|length > 0 %}
+            <a class="bl_cart_delete" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}itemListAd.php?dl_mem=all&ctg_id={{ctg_id}}">csvダウンロード</a>
+            {% elseif search|length > 0 %}
+            <a class="bl_cart_delete" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}itemListAd.php?dl_mem=all&ctg_id={{search}}">csvダウンロード</a>
+            {% else %}
+            <a class="bl_cart_delete" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}itemListAd.php?dl_mem=all">csvダウンロード</a>
+            {% endif %}
+            <h2 class="el_title"><span class="el_title_main">商品一覧</span></h2>
+            <p class="el_title_sub">items</p>
+            <div class="panel panel-primary">
+                <ul class="list-group el_items--list">
+                    {% for value in dataArr %}
+                    <li class="list-group-item el_items_item--list">
+                        <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}detailAd.php?item_id={{value.item_id}}">
+                            <img class="el_items_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/{{value.image}}" alt="{{value.item_name}}">
+                            <p class="el_items_text">{{value.item_name}}</p>
+                            <p class="el_items_text">&yen;{{value.price|number_format(0,'.',',')}}</p>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- bl_list -->
+    </section>
+{% include 'templates/footerAdmin.html.twig' %}

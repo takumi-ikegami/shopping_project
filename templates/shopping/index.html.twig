@@ -1,0 +1,96 @@
+{% include 'templates/header.html.twig' %}
+<div class="ly_key">
+    <!-- Slider main container -->
+    <div class="swiper swiper1 bl_swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide"><img class="bl_swiper_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/key/key_01x2200.jpg"
+                    alt="key_imgage"></div>
+            <div class="swiper-slide"><img class="bl_swiper_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/key/key_02x2200.jpg"
+                    alt="key_imgage"></div>
+            <div class="swiper-slide"><img class="bl_swiper_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/key/key_03x2200.jpg"
+                    alt="key_imgage"></div>
+        </div>
+    </div>
+    <!-- bl_swiper -->
+</div>
+<!-- ly_key -->
+<section class="ly_cate">
+    <div class="bl_cate ly_cate_inner">
+        <h2 class="el_title"><span class="el_title_main">カテゴリー</span></h2>
+        <p class="el_title_sub">category</p>
+        <div class="bl_cate_container">
+            {% for value in cateArr %}
+            <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}list.php?ctg_id={{value.ctg_id}}" class="bl_cate_box el_cate">
+                <img class="el_cate_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/cate/{{value.category_img}}" alt="{{value.category_name}}の画像">
+                <p class="el_cate_text">{{value.category_name}}</p>
+            </a>
+            {% endfor %}
+        </div>
+        <!-- bl_cate_container -->
+    </div>
+    <!-- bl_cate -->
+</section>
+<section class="ly_items">
+    <div class="bl_items ly_items_inner">
+        <h2 class="el_title"><span class="el_title_main">商品展示</span></h2>
+        <p class="el_title_sub">items</p>
+        <div class="bl_items_container">
+            <div class="bl_items_gridItem el_gridItem">
+                <img class="el_gridItem_img el_gridItem_img--pc" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/items/items2040x1260.jpg"
+                    alt="image1">
+                <img class="el_gridItem_img el_gridItem_img--sp" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/items/items1360x1940.jpg"
+                    alt="image1">
+            </div>
+        </div>
+        <!-- bl_items_container -->
+        <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}list.php" class="el_btn"><span class="el_btn_slide"></span>商品一覧</a>
+    </div>
+    <!-- bl_items -->
+</section>
+<section class="ly_ranking">
+    <div class="bl_ranking ly_ranking_inner">
+        <h2 class="el_title"><span class="el_title_main">売れ筋商品</span></h2>
+        <p class="el_title_sub">best seller</p>
+        <div class="swiper swiper2 el_items">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <a href="*" class="swiper-slide el_items_item">
+                    <img class="el_items_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/office_chairx600.jpg" alt="key_imgage">
+                    <p class="el_items_text">オフィスデスク用回転椅子</p>
+                    <p class="el_items_text">&yen;3,000</p>
+                </a>
+                <a href="*" class="swiper-slide el_items_item">
+                    <img class="el_items_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/office_chairx600.jpg" alt="key_imgage">
+                    <p class="el_items_text">オフィスデスク用回転椅子</p>
+                    <p class="el_items_text">&yen;3,000</p>
+                </a>
+                <a href="*" class="swiper-slide el_items_item">
+                    <img class="el_items_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/office_chairx600.jpg" alt="key_imgage">
+                    <p class="el_items_text">オフィスデスク用回転椅子</p>
+                    <p class="el_items_text">&yen;3,000</p>
+                </a>
+                <a href="*" class="swiper-slide el_items_item">
+                    <img class="el_items_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/office_chairx600.jpg" alt="key_imgage">
+                    <p class="el_items_text">オフィスデスク用回転椅子</p>
+                    <p class="el_items_text">&yen;3,000</p>
+                </a>
+                <a href="*" class="swiper-slide el_items_item">
+                    <img class="el_items_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/office_chairx600.jpg" alt="key_imgage">
+                    <p class="el_items_text">オフィスデスク用回転椅子</p>
+                    <p class="el_items_text">&yen;3,000</p>
+                </a>
+                <a href="*" class="swiper-slide el_items_item">
+                    <img class="el_items_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/office_chairx600.jpg" alt="key_imgage">
+                    <p class="el_items_text">オフィスデスク用回転椅子</p>
+                    <p class="el_items_text">&yen;3,000</p>
+                </a>
+            </div>
+        </div>
+        <!-- bl_swiper -->
+    </div>
+    <!-- bl_ranking -->
+</section>
+{% include 'templates/footer.html.twig' %}

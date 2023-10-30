@@ -1,0 +1,41 @@
+@use "../setting" as s;
+
+@mixin break_sp {
+  @media screen and (max-width: s.$breakPoint1) {
+    @content;
+    /*=======max-width:768px=======*/
+  }
+}
+
+@mixin break_sp_key {
+  @media screen and (max-width: s.$breakPoint_key) {
+    @content;
+    /*=======max-width:1100px=======*/
+  }
+}
+
+@mixin break_tb {
+  @media screen and (min-width: calc(s.$breakPoint1 + 1px)) and (max-width: s.$breakPoint2) {
+    @content;
+    /*=======min-width:769px=======*/
+  }
+}
+
+@mixin break_pc {
+  @media screen and (min-width: calc(s.$breakPoint2 + 1px)) {
+    @content;
+    /*=======min-width:769px=======*/
+  }
+}
+
+@mixin break_setMin($set) {
+  @media screen and (min-width: ($set)) {
+    @content;
+  }
+}
+
+@mixin break_setMax($set) {
+  @media screen and (max-width: ($set)) {
+    @content;
+  }
+}

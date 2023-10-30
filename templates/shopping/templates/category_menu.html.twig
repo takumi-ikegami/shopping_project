@@ -1,0 +1,17 @@
+<div class="bl_header_cateMenu el_cateMenu">
+    <div class="el_cateMenu_hum js_cate">
+        <span class="el_cateMenu_stick js_cate_stick"></span>
+        <span class="el_cateMenu_stick js_cate_stick"></span>
+    </div>
+    <ul class="el_cateMenu_listContainer js_cate_listContainer">
+        {% for value in cateArr %}
+        <li class="el_cateMenu_list js_cate_list">
+            <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}list.php?ctg_id={{value.ctg_id}}" class="el_cateMenu_link js_cate_link">
+                <img class="el_cateMenu_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/cate/{{value.category_img}}" alt="{{value.category_name}}の画像">
+                <p class="el_cateMenu_text">{{value.category_name}}</p>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<!--/ .bl_header_cateMenu-->

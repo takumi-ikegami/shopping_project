@@ -1,0 +1,59 @@
+@use "../../lib" as l;
+
+.el_items {
+  padding-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  &--list {
+    text-align: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  &_item {
+    text-align: center;
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &--list {
+      padding-top: 20px;
+      display: inline-block;
+      text-align: center;
+      width: 300px;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  &_img {
+    width: 88%;
+    overflow: hidden;
+  }
+  &_text {
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: block;
+    width: 88%;
+    &:first-of-type {
+      text-align: left;
+    }
+    &:last-of-type {
+      text-align: right;
+      padding-bottom: 0;
+    }
+  }
+}
+
+@include l.break_sp {
+  .el_items {
+    &_item {
+      &--list {
+        width: 40%;
+      }
+    }
+  }
+}

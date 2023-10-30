@@ -1,0 +1,90 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_regist">
+        <h2 class="el_title"><span class="el_title_main">新規会員登録</span></h2>
+        <p class="el_title_sub">regist</p>
+        <div class="bl_regist ly_regist_inner">
+            <input type="hidden" name="entry_url" id="entry_url" value="{{constant('shopping\\Bootstrap::ENTRY_URL')}}">
+            <form class="bl_regist_form" action="confirm.php" method="post">
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">お名前（氏名）<span class="bl_regist_red"> *必須</span></p>
+                    <div class="bl_regist_inputContainer">
+                        <p class="bl_regist_inputPud">姓：<input class="bl_regist_input" type="text" name="family_name"
+                                value="{{dataArr.family_name}}"></p>
+                        <p class="bl_regist_inputPud">名：<input class="bl_regist_input" type="text" name="first_name"
+                                value="{{dataArr.first_name}}"></p>
+                        {% if errArr.family_name|length > 0 %}<p class="bl_regist_errmsg">{{errArr.family_name}}</p>{% endif %}
+                        {% if errArr.first_name|length > 0 %}<p class="bl_regist_errmsg">{{errArr.first_name}}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">お名前（カナ）<span class="bl_regist_red"> *必須</span></p>
+                    <div class="bl_regist_inputContainer">
+                        <p class="bl_regist_inputPud">セイ：<input class="bl_regist_input" type="text" name="family_name_kana"
+                                value="{{dataArr.family_name_kana}}"></p>
+                        <p class="bl_regist_inputPud">メイ：<input class="bl_regist_input" type="text" name="first_name_kana"
+                                value="{{dataArr.first_name_kana}}"></p>
+                        {% if errArr.family_name_kana|length > 0 %}<p class="bl_regist_errmsg">{{errArr.family_name_kana}}</p>{% endif %}
+                        {% if errArr.first_name_kana|length > 0 %}<p class="bl_regist_errmsg">{{errArr.first_name_kana}}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">郵便番号<span class="bl_regist_red"> *必須</span></p>
+                    <div class="bl_regist_inputContainer">
+                        <input class="bl_regist_input bl_regist_input--add" type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1"
+                            size="3" maxlength="3"> -
+                        <input class="bl_regist_input bl_regist_input--add" type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2"
+                            size="4" maxlength="4">
+                        {% if errArr.zip1|length > 0 %}<p class="bl_regist_errmsg">{{errArr.zip1}}</p>{% endif %}
+                        {% if errArr.zip2|length > 0 %}<p class="bl_regist_errmsg">{{errArr.zip2}}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">住所<span class="bl_regist_red"> *必須</span></p>
+                    <div class="bl_regist_inputContainer">
+                        <input class="bl_regist_input" type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
+                        {% if errArr.address|length > 0 %}<p class="bl_regist_errmsg">{{errArr.address}}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">メールアドレス<span class="bl_regist_red"> *必須</span></p>
+                    <div class="bl_regist_inputContainer">
+                        <input class="bl_regist_input" type="text" name="email" value="{{dataArr.email}}" size="40">
+                        {% if errArr.email|length > 0 %}<p class="bl_regist_errmsg">{{errArr.email}}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">電話番号<span class="bl_regist_red"> *必須</span></p>
+                    <div class="bl_regist_inputContainer">
+                        <input class="bl_regist_input bl_regist_input--tel" type="text" name="tel1" value="{{dataArr.tel1}}" size="6"
+                            maxlength="6"> -
+                        <input class="bl_regist_input bl_regist_input--tel" type="text" name="tel2" value="{{dataArr.tel2}}" size="6"
+                            maxlength="6"> -
+                        <input class="bl_regist_input bl_regist_input--tel" type="text" name="tel3" value="{{dataArr.tel3}}" size="6"
+                            maxlength="6">
+                        {% if errArr.tel1|length > 0 %}<p class="bl_regist_errmsg">{{errArr.tel1}}</p>{% endif %}
+                        {% if errArr.tel2|length > 0 %}<p class="bl_regist_errmsg">{{errArr.tel2}}</p>{% endif %}
+                        {% if errArr.tel3|length > 0 %}<p class="bl_regist_errmsg">{{errArr.tel3}}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">ユーザーネーム<span class="bl_regist_red"> *必須</span></p>
+                    <div class="bl_regist_inputContainer">
+                        <input class="bl_regist_input" type="text" name="user_name" value="{{dataArr.user_name}}" size="40">
+                        {% if errArr.user_name|length > 0 %}<p class="bl_regist_errmsg">{{errArr.user_name}}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="bl_regist_item">
+                    <p class="bl_regist_subTitle">パスワード<span class="bl_regist_red"> *必須</span></p>
+                    <div class="bl_regist_inputContainer">
+                        <input class="bl_regist_input" type="password" name="user_pass" value="" size="40">
+                        {% if errArr.user_pass|length > 0 %}<p class="bl_regist_errmsg">{{errArr.user_pass}}</p>{% endif %}
+                    </div>
+                </div>
+                <div class="bl_regist_btnContainer">
+                    <input class="bl_regist_btn" type="submit" name="confirm" value="登録確認">
+                </div>
+            </form>
+        </div>
+        <!-- bl_form -->
+    </section>
+{% include 'templates/footer.html.twig' %}

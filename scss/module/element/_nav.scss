@@ -1,0 +1,89 @@
+@use "../../lib" as l;
+
+.el_nav {
+  &_listContainer {
+    display: flex;
+    justify-content: right;
+  }
+
+  &_list {
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    border-right: 1px solid rgba($color: l.$cFont, $alpha: 0.3);
+
+    &:last-child {
+      border: none;
+    }
+  }
+
+  &_link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &_img {
+    height: 32px;
+  }
+
+  &_text {
+    color: l.$cFont;
+    font-family: l.$baseFont;
+    font-size: l.$smollFont;
+  }
+}
+
+@include l.break_pc {
+  .el_nav {
+    &_hum {
+      display: none;
+    }
+  }
+}
+
+@include l.break_sp {
+  .el_nav {
+    &_hum {
+      position: relative;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    &_listContainer {
+      position: fixed;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      z-index: 1000;
+      height: 100vh;
+      width: 100%;
+      top: 0;
+      right: -100%;
+      opacity: 0.9;
+      background-color: l.$cMain;
+      transition: transform 0.7s;
+      text-align: center;
+    }
+
+    &_link {
+      color: l.$cFont;
+    }
+
+    &_stick {
+      display: block;
+      height: 2px;
+      width: 44px;
+      margin-bottom: 16px;
+      background-color: l.$cFont;
+      transition: transform 0.7s;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

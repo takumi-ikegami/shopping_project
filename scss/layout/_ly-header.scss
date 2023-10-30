@@ -1,0 +1,16 @@
+@use "../lib" as l;
+
+.ly_header {
+  position: fixed;
+  width: 100%;
+  background-color: l.$cWhite;
+  overflow: hidden;
+  opacity: 0.9;
+  z-index: 100;
+
+  &_inner {
+    @include l.center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}

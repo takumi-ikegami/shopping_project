@@ -1,0 +1,103 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_change">
+        <div class="bl_change_title">
+            <h1 class="bl_change_titleText">会員登録情報</h1>
+        </div>
+        <div class="bl_change ly_change_inner">
+            <form class="bl_change_form" action="change_confirm.php" method="post">
+                {% if oldDataArr.user_name|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_text">ユーザーネーム</p>
+                    <div class="bl_change_inputBox">
+                        <p class="bl_change_text">現在のユーザーネーム</p>
+                        <p class="bl_change_text">{{oldDataArr.user_name}}</p>
+                    </div>
+                    <div class="bl_change_inputBox">
+                        <p class="bl_change_text">新しいユーザーネーム</p>
+                        <input type="text" class="bl_change_input" name="user_name" value="{{dataArr.user_name}}" size="40">
+                        {% if errArr.user_name|length > 0 %}<br><span class="red">{{errArr.user_name}}</span>{% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if oldDataArr.user_pass|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_text">パスワード</p>
+                    <p class="bl_change_text">{{replace_pass}}</p>
+                    <div class="bl_change_inputBox">
+                        <p class="bl_change_text">現在のパスワード</p>
+                        <input type="password" class="bl_change_input" name="old_user_pass" size="40">
+                        {% if message|length > 0 %}<br><span class="red">{{message}}</span>{% endif %}
+                    </div>
+                    <div class="bl_change_inputBox">
+                        <p class="bl_change_text">新しいパスワード</p>
+                        <input type="password" class="bl_change_input" name="user_pass" value="" size="40">
+                        {% if errArr.user_pass|length > 0 %}<br><span class="red">{{errArr.user_pass}}</span>{% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if oldDataArr.family_name|length > 0 and oldDataArr.first_name|length > 0 and oldDataArr.first_name_kana|length > 0 and oldDataArr.first_name_kana|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_text">お名前</p>
+                    <p class="bl_change_text">{{oldDataArr.family_name}} {{oldDataArr.first_name}}</p>
+                    <div class="bl_change_inputBox">
+                        <input type="text" class="bl_change_input" name="family_name" value="{{dataArr.family_name}}">
+                        <input type="text" class="bl_change_input" name="first_name" value="{{dataArr.first_name}}">
+                        {% if errArr.family_name|length > 0 %}<br><span class="red">{{errArr.family_name}}</span>{% endif %}
+                        {% if errArr.first_name|length > 0 %}<br><span class="red">{{errArr.first_name}}</span>{% endif %}
+                    </div>
+                    <p class="bl_change_text">{{oldDataArr.family_name_kana}} {{oldDataArr.first_name_kana}}</p>
+                    <div class="bl_change_inputBox">
+                        <input type="text" class="bl_change_input" name="family_name_kana" value="{{dataArr.family_name_kana}}">
+                        <input type="text" class="bl_change_input" name="first_name_kana" value="{{dataArr.first_name_kana}}">
+                        {% if errArr.family_name_kana|length > 0 %}<br><span class="red">{{errArr.family_name_kana}}</span>{% endif %}
+                        {% if errArr.first_name_kana|length > 0 %}<br><span class="red">{{errArr.first_name_kana}}</span>{% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if oldDataArr.zip1|length > 0 and oldDataArr.zip2|length > 0 and oldDataArr.address|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_text">郵便番号・住所</p>
+                    <p class="bl_change_text">{{oldDataArr.zip1}}-{{oldDataArr.zip2}}</p>
+                    <div class="bl_change_inputBox">
+                        <input type="text" class="bl_change_input" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3"> -
+                        <input type="text" class="bl_change_input" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
+                        {% if errArr.zip1|length > 0 %}<br><span class="red">{{errArr.zip1}}</span>{% endif %}
+                        {% if errArr.zip2|length > 0 %}<br><span class="red">{{errArr.zip2}}</span>{% endif %}
+                    </div>
+                    <p class="bl_change_text">{{oldDataArr.address}}</p>
+                    <div class="bl_change_inputBox">
+                        <input type="text" class="bl_change_input" name="address" value="{{dataArr.address}}" id="address" size="40">
+                        {% if errArr.address|length > 0 %}<br><span class="red">{{errArr.address}}</span>{% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if oldDataArr.email|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_text">メールアドレス</p>
+                    <p class="bl_change_text">{{oldDataArr.email}}</p>
+                    <div class="bl_change_inputBox">
+                        <input type="text" class="bl_change_input" name="email" value="{{dataArr.email}}" size="40">
+                        {% if errArr.email|length > 0 %}<br><span class="red">{{errArr.email}}</span>{% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                {% if oldDataArr.tel1|length > 0 and oldDataArr.tel2|length > 0 and oldDataArr.tel3|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_text">電話番号</p>
+                    <p class="bl_change_text">{{oldDataArr.tel1}}-{{oldDataArr.tel2}}-{{oldDataArr.tel3}}</p>
+                    <div class="bl_change_inputBox">
+                        <input type="text" class="bl_change_input" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6">-
+                        <input type="text" class="bl_change_input" name="tel2" value="{{dataArr.tel2}}" size="6" maxlength="6">-
+                        <input type="text" class="bl_change_input" name="tel3" value="{{dataArr.tel3}}" size="6" maxlength="6">
+                        {% if errArr.tel1|length > 0 %}<br><span class="red">{{errArr.tel1}}</span>{% endif %}
+                        {% if errArr.tel2|length > 0 %}<br><span class="red">{{errArr.tel2}}</span>{% endif %}
+                        {% if errArr.tel3|length > 0 %}<br><span class="red">{{errArr.tel3}}</span>{% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                <input class="bl_change_btn" type="submit" name="confirm" value="確認">
+            </form>
+            <p class="bl_change_back"><a class="bl_change_backBtn" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}mypage.php">マイページに戻る</a></p>
+        </div>
+    </section>
+{% include 'templates/footer.html.twig' %}

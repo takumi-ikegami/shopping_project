@@ -1,0 +1,26 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_listPage2">
+        <div class="bl_listPage ly_listPage2_inner">
+             <h2 class="el_title"><span class="el_title_main">購入履歴一覧</span></h2>
+            <p class="el_title_sub">buy list</p>
+            {% if recordArr|length > 0 %}
+            {% for key,value in recordArr %}
+            <div class="bl_listPage_contents">
+                <p class="bl_listPage_text">{{key}}のお取引</p>
+                {% for key2,value2 in value %}
+                <div class="bl_listPage_itemBox">
+                    <p class="bl_listPage_text">{{value2.item_name}}</p>
+                    <p class="bl_listPage_text">{{value2.num}}点</p>
+                    <img class="bl_listPage_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/{{value2.image}}" alt="{{value2.item_name}}の画像">
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            {% elseif recordText|length > 0 %}
+            <div class="bl_listPage_textBox">
+                <p class="bl_listPage_msg">{{recordText}}</p>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+{% include 'templates/footer.html.twig' %}

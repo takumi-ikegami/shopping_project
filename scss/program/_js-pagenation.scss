@@ -1,0 +1,39 @@
+@use "../lib" as l;
+
+.pagination {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .page-item {
+    margin-right: 1em;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  & .page-link {
+    display: block;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    color: l.$cFont;
+    font-family: l.$baseFont;
+    font-size: l.$baseSize;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  & .active {
+    background-color: l.$cFont;
+    & .page-link {
+      color: l.$cMain;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

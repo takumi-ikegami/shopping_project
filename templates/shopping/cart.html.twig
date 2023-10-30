@@ -1,0 +1,59 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_cart">
+        <div class="bl_cart ly_cart_inner">
+            <input type="hidden" name="entry_url" value="{{constant('shopping\\Bootstrap::ENTRY_URL')}}" id="entry_url">
+            <div class="bl_cart_cart">
+                <h2 class="bl_cart_title">ショッピングカート</h2>
+                {% if buy_message|length > 0 %}
+                <p class="bl_cart_text">{{buy_message}}</p>
+                {% endif %}
+                {% if dataArr|length == 0 %}
+                <p class="bl_cart_text">カートの中には何も入っていません</p>
+                {% else %}
+                <div class="panel panel-primary">
+                    <ul class="list-group">
+                        {% for value in dataArr %}
+                        <li class="list-group-item  bl_cart_cartItem">
+                            <div class="bl_cart_imgWrapper">
+                                <img class="bl_cart_itemImg" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/{{value.image}}"
+                                    alt="{{item.name}}">
+                            </div>
+                            <div class="bl_cart_itemDetail">
+                                <h3 class="bl_cart_itemTitle">{{value.item_name}}</h3>
+                                <p>&yen;{{value.price|number_format(0,'.',',')}}</p>
+                                <select class="bl_cart_num cart_reduce" name="#cart_reduce_{{value.crt_id}}">
+                                    {# 在庫と連動さえせるための記述 #}
+                                    {% for i in 1..(value.stock) %}
+                                        {% if value.num == i %}
+                                        <option value="{{i}}" selected>{{i}}</option>
+                                        {% else %}
+                                        <option value="{{i}}">{{i}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <input type="hidden" name="reduce_id" value="{{value.crt_id}}" id="cart_reduce_{{value.crt_id}}">
+                                </select>
+                                <div class="bl_cart_deleteWrap">
+                                    <a class="bl_cart_delete" href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}cart.php?crt_id={{value.crt_id}}">削除</a>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            <div class="bl_cart_cartNum">
+                <h2 class="bl_cart_title">小計（税込）</h2>
+                <p class="bl_cart_text">全{{sumNum}}点</p>
+                <p class="bl_cart_text">:&yen;{{sumPrice|number_format(0,'.',',')}}</p>
+                <form action="buy.php" name="buy_form" method="post">
+                  <input type="hidden" name="buy" value="購入">
+                  <input type="hidden" name="sumNum" value="{{sumNum}}">
+                  <input type="hidden" name="sumPrice" value="{{sumPrice}}">
+                  <a href="javascript:buy_form.submit()" class="el_btn bl_cart_btn"><span class="el_btn_slide"></span>購入</a>
+                </form>
+            </div>
+        </div>
+        <!-- bl_cart -->
+    </section>
+{% include 'templates/footer.html.twig' %}

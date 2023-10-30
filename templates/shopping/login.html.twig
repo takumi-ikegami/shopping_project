@@ -1,0 +1,30 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_login">
+    <div class="bl_login ly_login_inner">
+        <h2 class="el_title"><span class="el_title_main">ログイン</span></h2>
+        <p class="el_title_sub">login</p>
+        <div class="bl_login_loginWrap">
+            <div class="bl_login_login">
+                <p class="bl_login_text">ログインIDとパスワードを入力して下さい</p>
+                {% if message|length > 0 %}<p class="bl_login_text">{{message}}</p>{% endif %}
+                <form class="bl_login_form" action="#" method="post">
+                    <ul class="bl_login_list">
+                        <li class="bl_login_listItem">
+                            <p class="bl_login_text">ユーザーネーム：</p>
+                            <input class="bl_login_input" type="text" name="user_name">
+                        </li>
+                        <li class="bl_login_listItem">
+                            <p class="bl_login_text">パスワード：</p>
+                            <input class="bl_login_input" type="password" name="user_pass">
+                        </li>
+                        <li class="bl_login_listItem">
+                            <input class="bl_login_btn" type="submit" name="confirm" value="ログイン">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- bl_login -->
+</section>
+{% include 'templates/footer.html.twig' %}

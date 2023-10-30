@@ -1,0 +1,26 @@
+@use "../../lib" as l;
+
+.el_gridItem {
+  &_img {
+    width: 100%;
+    &--pc {
+      display: block;
+    }
+    &--sp {
+      display: none;
+    }
+  }
+}
+
+@include l.break_sp_key {
+  .el_gridItem {
+    &_img {
+      &--pc {
+        display: none;
+      }
+      &--sp {
+        display: block;
+      }
+    }
+  }
+}

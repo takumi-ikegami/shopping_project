@@ -1,0 +1,18 @@
+@use "../../lib" as l;
+
+.bl_cate {
+  &_container {
+    padding-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+@include l.break_sp {
+  .bl_cate {
+    &_container {
+      padding-top: 40px;
+    }
+  }
+}

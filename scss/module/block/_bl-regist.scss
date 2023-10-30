@@ -1,0 +1,83 @@
+@use "../../lib" as l;
+
+.bl_regist {
+  &_item {
+    padding-bottom: 30px;
+  }
+  &_subTitle {
+    font-size: l.$baseSize;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    padding-bottom: 10px;
+  }
+  &_input {
+    border: 1px solid l.$cShadow;
+    height: 2rem;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  &_inputPud {
+    font-size: l.$baseSize;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    display: inline-block;
+  }
+  &_errmsg {
+    padding-top: 10px;
+    color: l.$cErr;
+  }
+  &_form {
+    border: 1px solid l.$cShadow;
+    margin: 0 auto;
+    display: block;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+  }
+  &_red {
+    font-size: l.$baseSize;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    color: l.$cErr;
+  }
+  &_btn {
+    font-size: l.$baseSize;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    margin: 0 auto;
+    display: block;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid l.$cShadow;
+    &:hover {
+      color: l.$cMain;
+      background-color: l.$cShadow;
+    }
+  }
+  &_btnContainer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+@include l.break_sp {
+  .bl_regist {
+    &_input {
+      width: 100%;
+      margin-top: 10px;
+      &--add {
+        width: 40%;
+      }
+      &--tel {
+        width: 25%;
+      }
+    }
+    &_inputPud {
+      padding-top: 10px;
+    }
+    &_btn {
+      max-width: 150px;
+      width: 100%;
+    }
+  }
+}

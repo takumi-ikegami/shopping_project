@@ -1,0 +1,101 @@
+@use "../../lib" as l;
+
+.bl_cart {
+  display: flex;
+  justify-content: space-between;
+  &_cart {
+    border: 1px solid l.$cShadow;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    min-height: 500px;
+    width: 60%;
+  }
+  &_title {
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    font-size: l.$upFont2;
+  }
+  &_text {
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    font-size: l.$baseSize;
+    padding-top: 20px;
+    &:last-of-type {
+      padding-bottom: 30px;
+    }
+  }
+  &_cartNum {
+    border: 1px solid l.$cShadow;
+    height: 270px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    width: 35%;
+  }
+  &_btn {
+    width: 200px;
+    border-radius: 30px;
+  }
+
+  &_cartItem {
+    display: flex;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    border-bottom: 1px solid l.$cShadow;
+    &:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+  &_imgWrapper {
+    padding-right: 30px;
+  }
+  &_itemImg {
+    width: 200px;
+  }
+  &_num {
+    border: 1px solid l.$cShadow;
+    margin-top: 20px;
+  }
+  &_deleteWrap {
+    padding-top: 50px;
+  }
+  &_delete {
+    display: inline-block;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+@include l.break_sp {
+  .bl_cart {
+    display: block;
+    &_cart {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+    &_cartNum {
+      width: 100%;
+    }
+    &_cartItem {
+      display: block;
+    }
+    &_imgWrapper {
+      padding-right: 0;
+      text-align: center;
+    }
+    &_itemImg {
+      width: 100%;
+      max-width: 300px;
+    }
+    &_itemDetail {
+      padding-top: 20px;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_change">
+        <div class="bl_change_title">
+            <h1 class="bl_change_titleText">会員登録情報</h1>
+        </div>
+        <form class="bl_change ly_change_inner" action="change_confirm.php" method="post">
+            <p class="bl_change_text">以下の内容で登録してよろしいでしょうか</p>
+            <p class="bl_change_text">変更を確定する場合は変更ボタンを押してください</p>
+            <div class="bl_change_main">
+                {% if oldDataArr.family_name|length > 0 and oldDataArr.first_name|length > 0 and oldDataArr.first_name_kana|length > 0 and oldDataArr.first_name_kana|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">現在のお名前（氏名）</p>
+                    <p class="bl_change_text">{{oldDataArr.family_name}} {{oldDataArr.first_name}}</p>
+                </div>
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">新しいお名前（氏名）</p>
+                    <p class="bl_change_text">{{dataArr.family_name}} {{dataArr.first_name}}</p>
+                </div>
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">現在のお名前（かな）</p>
+                    <p class="bl_change_text">{{oldDataArr.family_name_kana}} {{oldDataArr.first_name_kana}}</p>
+                </div>
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">新しいお名前（かな）</p>
+                    <p class="bl_change_text">{{dataArr.family_name_kana}} {{dataArr.first_name_kana}}</p>
+                </div>
+                {% endif %}
+                {% if oldDataArr.zip1|length > 0 and oldDataArr.zip2|length > 0 and oldDataArr.address|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">現在の郵便番号・住所</p>
+                    <p class="bl_change_text">{{oldDataArr.zip1}}-{{oldDataArr.zip2}}</p>
+                    <p class="bl_change_text">{{oldDataArr.address}}</p>
+                </div>
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">新しい郵便番号・住所</p>
+                    <p class="bl_change_text">{{dataArr.zip1}}-{{dataArr.zip2}}</p>
+                    <p class="bl_change_text">{{dataArr.address}}</p>
+                </div>
+                {% endif %}
+                {% if oldDataArr.email|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">現在のメールアドレス</p>
+                    <p class="bl_change_text">{{dataArr.email}}</p>
+                </div>
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">新しいメールアドレス</p>
+                    <p class="bl_change_text">{{oldDataArr.email}}</p>
+                </div>
+                {% endif %}
+                {% if oldDataArr.user_name|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">現在のユーザーネーム</p>
+                    <p class="bl_change_text">{{oldDataArr.user_name}}</p>
+                </div>
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">新しいユーザーネーム</p>
+                    <p class="bl_change_text">{{dataArr.user_name}}</p>
+                </div>
+                {% endif %}
+                {% if oldDataArr.user_pass|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">現在のパスワード</p>
+                    <p class="bl_change_text">{{replace_pass}}</p>
+                </div>
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">新しいパスワード</p>
+                    <p class="bl_change_text">{{replace_pass}}</p>
+                </div>
+                {% endif %}
+                {% if oldDataArr.tel1|length > 0 and oldDataArr.tel2|length > 0 and oldDataArr.tel3|length > 0 %}
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">現在の電話番号</p>
+                    <p class="bl_change_text">{{oldDataArr.tel1}}-{{oldDataArr.tel2}}-{{oldDataArr.tel3}}</p>
+                </div>
+                <div class="bl_change_contents">
+                    <p class="bl_change_subTitle">新しい電話番号</p>
+                    <p class="bl_change_text">{{dataArr.tel1}}-{{dataArr.tel2}}-{{dataArr.tel3}}</p>
+                </div>
+                {% endif %}
+            </div>
+            <div>
+                <input class="bl_change_btn" type="submit" name="complete" value="変更">
+                <input class="bl_change_btn" type="submit" name="back" value="戻る">
+                {% for key,value in dataArr %}
+                    {# iterable 配列かどうか #}
+                    {% if value is iterable %}
+                        {% for v in value %}
+                            <input type="hidden" name="{{key}}[]" value="{{v}}">
+                        {% endfor %}
+                    {% else %}
+                        <input type="hidden" name="{{key}}" value="{{value}}">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </form>
+    </section>
+{% include 'templates/footer.html.twig' %}

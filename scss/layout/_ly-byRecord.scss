@@ -1,0 +1,17 @@
+@use "../lib" as l;
+
+.ly_buy {
+  padding-top: 110px;
+  padding-bottom: 120px;
+
+  &_inner {
+    @include l.center;
+  }
+}
+
+@include l.break_sp {
+  .ly_buy {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+}

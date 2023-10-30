@@ -1,0 +1,29 @@
+{% include 'templates/header.html.twig' %}
+    <section class="ly_detail">
+        <input type="hidden" name="entry_url" value="{{constant('shopping\\Bootstrap::ENTRY_URL')}}" id="entry_url">
+        <div class="bl_detail ly_detail_inner">
+            <div class="bl_detail_detail">
+                <img class="bl_detail_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/buy_items/{{itemData.image}}" alt="{{itemData.item_name}}">
+                <div class="bl_detail_info">
+                    <h2 class="bl_detail_title">{{itemData.item_name}}</h2>
+                    <p class="bl_detail_price">&yen;{{itemData.price|number_format(0, '.', ',')}}</p>
+                    <p class="bl_detail_text">{{itemData.detail}}</p>
+                    <select class="bl_detail_num" name="item_sum" id="item_sum">
+                         {# 在庫と連動さえせるための記述 #}
+                        {% if itemData.stock > 0 %}
+                        {% for i in 1..(itemData.stock) %}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                        {% else %}
+                        <option value="在庫なし">在庫なし</option>
+                        {% endif %}
+                    </select>
+                    <input type="hidden" name="item_id" id="item_id" value="{{itemData.item_id}}">
+                    <button class="el_btn" id="cart_in"><span class="el_btn_slide"></span>カートに入れる</button>
+                </div>
+            </div>
+            <input type="button" class="bl_detail_link" name="back" value="一覧へ戻る" onclick="history.back(); return false;">
+        </div>
+        <!-- bl_ranking -->
+    </section>
+{% include 'templates/footer.html.twig' %}

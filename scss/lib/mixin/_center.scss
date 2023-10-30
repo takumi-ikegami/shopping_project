@@ -1,0 +1,8 @@
+@use "../setting" as s;
+
+@mixin center {
+  max-width: s.$wrapper;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
+}

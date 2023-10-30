@@ -1,0 +1,38 @@
+@use "../../lib" as l;
+
+.el_btn {
+  color: l.$cFont;
+  font-family: l.$baseFont;
+  color: l.$cSub;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  max-width: 240px;
+  width: 100%;
+  height: 57px;
+  border: 1px solid l.$cSub;
+  line-height: 55px;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    color: l.$cWhite;
+  }
+
+  &:hover > .el_btn_slide {
+    transform: none;
+  }
+
+  &_slide {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: l.$cSub;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: -1;
+  }
+}

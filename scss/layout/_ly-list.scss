@@ -1,0 +1,17 @@
+@use "../lib" as l;
+
+.ly_list {
+  padding-top: 245px;
+  padding-bottom: 120px;
+
+  &_inner {
+    @include l.center;
+  }
+}
+
+@include l.break_sp {
+  .ly_list {
+    padding-top: 245px;
+    padding-bottom: 80px;
+  }
+}

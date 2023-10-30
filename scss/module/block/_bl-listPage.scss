@@ -1,0 +1,70 @@
+@use "../../lib" as l;
+
+.bl_listPage {
+  &_contents {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  &_navContainer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  &_nav {
+    border-right: 1px solid l.$cFont;
+    padding: 10px;
+    &:last-of-type {
+      border-right: none;
+    }
+    &:hover {
+      color: l.$cShadow;
+    }
+  }
+  &_month {
+    text-align: center;
+  }
+  &_select {
+    border: 1px solid l.$cFont;
+  }
+  &_text {
+    font-size: l.$baseFont;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    padding-bottom: 10px;
+  }
+  &_textBox {
+    height: 300px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  &_msg {
+    text-align: center;
+  }
+  &_table {
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    & th {
+      padding-right: 30px;
+    }
+  }
+  &_img {
+    width: 300px;
+    height: 300px;
+  }
+  &_itemBox {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  &_delete {
+    &:hover {
+      color: l.$cShadow;
+    }
+  }
+  &_btn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}

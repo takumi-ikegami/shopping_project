@@ -1,0 +1,34 @@
+@use "../../lib" as l;
+
+.bl_detailAd {
+  text-align: center;
+  &_form {
+    text-align: center;
+  }
+  &_img {
+    width: 300px;
+    height: 300px;
+  }
+  &_info {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  &_item {
+    padding-bottom: 20px;
+  }
+  &_link {
+    &:hover {
+      color: l.$cShadow;
+    }
+  }
+  &_input {
+    border: 1px solid l.$cShadow;
+    height: 2rem;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  &_errmsg {
+    padding-top: 10px;
+    color: l.$cErr;
+  }
+}

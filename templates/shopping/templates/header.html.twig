@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>My House Creaters</title>
+    <!-- 以下OGPページごとに異なる値を入力 -->
+    <meta property="og:title" content="my house creataers" />
+    <meta property="og:site_name" content="my house creataers" />
+    <meta property="og:locale" content="ja_JP" />
+    {% if page_id.page == 'front_page' %}
+    <meta property="og:description" content="my house creataers-メインページ" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="ページの URL(絶対パス)" />
+    <meta property="og:image" content="" />
+    {% elseif page_id.page == 'list_page' %}
+    <meta property="og:description" content="my house creataers-商品一覧ページ" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="ページの URL(絶対パス)" />
+    <meta property="og:image" content="" />
+    {% elseif page_id.page == 'detail_page' %}
+    <meta property="og:description" content="my house creataers-商品詳細ページ" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="ページの URL(絶対パス)" />
+    <meta property="og:image" content="" />
+    {% elseif page_id.page == 'cart_page' %}
+    <meta property="og:description" content="my house creataers-カートページ" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="ページの URL(絶対パス)" />
+    <meta property="og:image" content="" />
+    {% elseif page_id.page == 'login_page' %}
+    <meta property="og:description" content="my house creataers-ログインページ" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="ページの URL(絶対パス)" />
+    <meta property="og:image" content="" />
+    {% elseif page_id.page == 'regist_page' %}
+    <meta property="og:description" content="my house creataers-登録ページ" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="ページの URL(絶対パス)" />
+    <meta property="og:image" content="" />
+    {% elseif page_id.page == 'regist_page' %}
+    <meta property="og:description" content="my house creataers-登録ページ" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="ページの URL(絶対パス)" />
+    <meta property="og:image" content="" />
+    {% endif %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{constant('shopping\\Bootstrap::APP_URL')}}css/style.css">
+    <!-- jクエリはcdnで読み込む、必要なければ削除 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="ly_header">
+        <div class="ly_header_inner">
+            <div class="bl_header">
+                <h1 class="bl_header_title">
+                    <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}index.php">
+                        MY HOUSE<br> CREATERS
+                    </a>
+                </h1>
+                <div class="bl_header_sideMenu">
+                    <nav class="bl_header_nav el_nav">
+                        <div class="el_nav_hum js_hum">
+                            <span class="el_nav_stick js_hum_stick"></span>
+                            <span class="el_nav_stick js_hum_stick"></span>
+                            <span class="el_nav_stick js_hum_stick"></span>
+                        </div>
+                        <ul class="el_nav_listContainer js_hum_listContainer">
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}list.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/itemx64.png" alt="商品一覧の画像">
+                                    <p class="el_nav_text">商品一覧</p>
+                                </a>
+                            </li>
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}support.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/incx64.png" alt="お問い合わせの画像">
+                                    <p class="el_nav_text">カスタマーサポート</p>
+                                </a>
+                            </li>
+                            {% if sessionData.login_user|length > 0 %}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}mypage.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/humanx64.png" alt="マイページの画像">
+                                    <p class="el_nav_text">マイページ</p>
+                                </a>
+                            </li>
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}logout.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/loginx64.png" alt="ログアウトの画像">
+                                    <p class="el_nav_text">ログアウト</p>
+                                </a>
+                            </li>
+                            {% else %}
+                            {% if page_id.page != 'regist_page' %}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}regist.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/humanx64.png" alt="新規登録の画像">
+                                    <p class="el_nav_text">新規登録</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if page_id.page != 'login_page' %}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}login.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/loginx64.png" alt="ログインの画像">
+                                    <p class="el_nav_text">ログイン</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% endif %}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}cart.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/cartx64.png" alt="カートの画像">
+                                    <p class="el_nav_text">カート</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- bl_header_container  -->
+            </div>
+            <!-- bl_header -->
+            {% if page_id.page == 'list_page' or page_id.page == 'detail_page' or page_id.page == 'cart_page' %}
+            <form class="bl_header_form" action="list.php" method="get">
+                <input class="bl_header_textForm" type="text" name="search" value=''>
+            </form>
+            {% include 'templates/category_menu.html.twig' %}
+            {% endif %}
+        </div>
+        <!--/.ly_header_inner-->
+    </header>

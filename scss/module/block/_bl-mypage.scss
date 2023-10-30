@@ -1,0 +1,17 @@
+@use "../../lib" as l;
+
+.bl_mypage {
+  &_list {
+    padding-top: 20px;
+  }
+  &_item {
+    padding-top: 30px;
+  }
+  &_text {
+    text-align: center;
+    font-size: l.$baseSize;
+    font-family: l.$baseFont;
+    color: l.$cFont;
+    width: 100%;
+  }
+}

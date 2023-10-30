@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>My House Creaters</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{constant('shopping\\Bootstrap::APP_URL')}}css/style.css">
+    <!-- jクエリはcdnで読み込む、必要なければ削除 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="ly_header">
+        <div class="ly_header_inner">
+            <div class="bl_header">
+                <h1 class="bl_header_title">
+                    <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}admin.php">
+                        MY HOUSE<br> CREATERS
+                    </a>
+                </h1>
+                <div class="bl_header_sideMenu">
+                    {% if sessionData.login_admin|length > 0 %}
+                    <nav class="bl_header_nav el_nav">
+                        <div class="el_nav_hum js_hum">
+                            <span class="el_nav_stick js_hum_stick"></span>
+                            <span class="el_nav_stick js_hum_stick"></span>
+                            <span class="el_nav_stick js_hum_stick"></span>
+                        </div>
+                        <ul class="el_nav_listContainer js_hum_listContainer">
+                            {% if page_id.page != 'memList_page'%}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}memListAd.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/humanx64.png" alt="会員情報一覧の画像">
+                                    <p class="el_nav_text">会員情報一覧</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if page_id.page != 'itemList_page'%}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}itemListAd.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/itemx64.png" alt="商品一覧の画像">
+                                    <p class="el_nav_text">商品一覧</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}detailAd.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/itemx64.png" alt="商品一覧の画像">
+                                    <p class="el_nav_text">商品新規登録</p>
+                                </a>
+                            </li>
+                            {% if page_id.page != 'incList_page'%}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}incListAd.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/incx64.png" alt="お問い合わせ一覧の画像">
+                                    <p class="el_nav_text">お問い合わせ一覧</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if page_id.page != 'buyList_page'%}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}buyListAd.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/incx64.png" alt="購入履歴一覧の画像">
+                                    <p class="el_nav_text">購入履歴一覧</p>
+                                </a>
+                            </li>
+                            {% endif %}
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}admin.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/homex64.png" alt="トップページの画像">
+                                    <p class="el_nav_text">トップページ</p>
+                                </a>
+                            </li>
+                            <li class="el_nav_list js_hum_list">
+                                <a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}logout_admin.php" class="el_nav_link js_hum_link">
+                                    <img class="el_nav_img" src="{{constant('shopping\\Bootstrap::ENTRY_URL')}}images/icon/loginx64.png" alt="ログアウトの画像">
+                                    <p class="el_nav_text">ログアウト</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+                <!-- bl_header_container  -->
+            </div>
+            <!-- bl_header -->
+            {% if page_id.page == 'itemList_page' or page_id.page == 'detailAd_page' or page_id.page == 'buyList_page' %}
+            <form class="bl_header_form" action="itemListAd.php" method="get">
+                <input class="bl_header_textForm" type="text" name="search" value=''>
+            </form>
+            {% include 'templates/categoryAd_menu.html.twig' %}
+            {% elseif page_id.page == 'incList_page' %}
+            <form class="bl_header_form" action="incListAd.php" method="get">
+                <input class="bl_header_textForm" type="text" name="search" value=''>
+                {% if year|length > 0 %}
+                <input type="hidden" name="sup_year" value="{{year}}" id="sup_year">
+                {% endif %}
+                {% if month|length > 0 %}
+                <input type="hidden" name="sup_month" value="{{month}}" id="sup_month">
+                {% endif %}
+                {% if cor|length > 0 %}
+                <input type="hidden" name="sup_cor" value="{{cor}}" id="sup_cor">
+                {% endif %}
+            </form>
+            {% endif %}
+        </div>
+        <!--/.ly_header_inner-->
+    </header>

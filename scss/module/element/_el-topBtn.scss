@@ -1,0 +1,22 @@
+@use "../../lib" as l;
+
+.el_topBtn {
+  position: fixed;
+  height: 64px;
+  right: 50px;
+  bottom: 30px;
+  z-index: 1000;
+  &:hover {
+    background-color: l.$cShadow;
+  }
+
+  &_img {
+    height: 64px;
+  }
+}
+
+@include l.break_sp {
+  .el_topBtn {
+    right: 20px;
+  }
+}
