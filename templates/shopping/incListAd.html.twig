@@ -21,7 +21,7 @@
             {% if year|length > 0 %}
             <div class="bl_listPage_month">
                 <p class="bl_listPage_text">{{year}}年度</p>
-                <select class="incList bl_listPage_select" name="#sup_{{year}}">
+                <select class="incList monthList bl_listPage_select" name="#sup_{{year}}">
                     {% if month|length > 0 %}
                         {% for i in 1..12 %}
                             {% if i == month %}

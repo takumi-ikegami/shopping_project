@@ -26,8 +26,8 @@ class Item
         $col = ' item_id, item_name, detail, price, image, ctg_id, stock, delete_flg ';
         switch ($mode) {
             case 'Ad':
-                $where = ($ctg_id !== '') ? ' ctg_id = ?' : '';
-                $arrVal = ($ctg_id !== '') ? [$ctg_id] : [];
+                $where = ($ctg_id !== '') ? ' ctg_id = ?' : 'delete_flg = ?';
+                $arrVal = ($ctg_id !== '') ? [$ctg_id, 0] : [0];
                 break;
 
             default:

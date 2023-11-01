@@ -89,13 +89,17 @@
                 <!-- bl_header_container  -->
             </div>
             <!-- bl_header -->
-            {% if page_id.page == 'itemList_page' or page_id.page == 'detailAd_page' or page_id.page == 'buyList_page' %}
+            {% if page_id.page == 'itemList_page' or page_id.page == 'detailAd_page' %}
             <form class="bl_header_form" action="itemListAd.php" method="get">
                 <input class="bl_header_textForm" type="text" name="search" value=''>
             </form>
             {% include 'templates/categoryAd_menu.html.twig' %}
-            {% elseif page_id.page == 'incList_page' %}
+            {% elseif page_id.page == 'incList_page' or page_id.page == 'buyList_page' %}
+            {% if page_id.page == 'incList_page' %}
             <form class="bl_header_form" action="incListAd.php" method="get">
+            {% elseif page_id.page == 'buyList_page' %}
+            <form class="bl_header_form" action="buyListAd.php" method="get">
+            {% endif %}
                 <input class="bl_header_textForm" type="text" name="search" value=''>
                 {% if year|length > 0 %}
                 <input type="hidden" name="sup_year" value="{{year}}" id="sup_year">

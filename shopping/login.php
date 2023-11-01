@@ -60,10 +60,14 @@ if (count($_POST) === 0) {
             $new_session = session_id();
             $_SESSION["login_user"] = $_POST['user_name']; //セッションにログイン情報を登録
             $result_session = $login->session_serch($_POST['user_name'], '');
-            if ($result_session[0]['user_name'] !== $_POST['user_name']) {
-                $login->session_update_new($old_session, $new_session, $_SESSION["login_user"], '');
+            if (isset($result_session[0]['user_name'])) {
+                if ($result_session[0]['user_name'] !== $_POST['user_name']) {
+                    $login->session_update_new($old_session, $new_session, $_SESSION["login_user"], '');
+                } else {
+                    $login->session_update($new_session, $_SESSION["login_user"], '');
+                }
             } else {
-                $login->session_update($new_session, $_SESSION["login_user"], '');
+                $login->session_update_new($old_session, $new_session, $_SESSION["login_user"], '');
             }
             header("Location:" . Bootstrap::ENTRY_URL . "index.php"); //ログイン後のページにリダイレクト
             exit();

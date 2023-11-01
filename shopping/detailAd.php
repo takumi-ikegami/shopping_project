@@ -87,7 +87,7 @@ if (isset($_POST['item_regist'])) {
                 case 'image':
                     if (!empty($_FILES['image']['name'])) {
                         $image = uniqid(mt_rand(), true);
-                        $zip .= '.' . substr(strrchr($_FILES['image']['name'], '.'), 1);
+                        $zip = '.' . substr(strrchr($_FILES['image']['name'], '.'), 1);
                         $image .= $zip;
 
                         if (preg_match('/.(jpg|jpeg|png|gif|bmp|svg|webp)$/', $image) === 1) {
@@ -126,6 +126,7 @@ if (isset($_POST['item_regist'])) {
             $ins_arr[$key] = $value;
         }
     }
+
 
     $errArr = $iR->errorCheck($ins_arr);
     $err_check = $iR->getErrorFlg();

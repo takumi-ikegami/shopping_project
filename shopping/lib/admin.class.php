@@ -55,10 +55,19 @@ class Admin
         $col =
             'spt_id, support, spt_email, user_name, sup_date, inc_date, support_flg';
         $userSql = ($user_name !== '') ? ' user_name LIKE ' . "'%" . $user_name . "%'" . " AND " : '';
+        if ($month !== '') {
+            if ($month === '4' || $month === '6' || $month === '9' || $month === '11') {
+                $month_end = '30';
+            } elseif ($month === '2') {
+                $month_end = '29';
+            } else {
+                $month_end = '31';
+            }
+        }
         if ($cor !== '') {
             if ($year !== '') {
                 if ($month !== '') {
-                    $sql = " support_flg = " . $cor . " AND sup_date " . ">= '" . $year . "-" . $month . "-01 00:00:00'" . " AND sup_date " . "<= '" . $year . "-" . $month . "-31 23:59:59'";
+                    $sql = " support_flg = " . $cor . " AND sup_date " . ">= '" . $year . "-" . $month . "-01 00:00:00'" . " AND sup_date " . "<= '" . $year . "-" . $month . "-" . $month_end . " 23:59:59'";
                     $where = ($userSql !== '') ? $userSql . $sql : $sql;
                 } else {
                     $sql = " support_flg = " . $cor . " AND sup_date " . ">= '" . $year . "-01-01 00:00:00'" . " AND sup_date " . "< '" . $year + 1 . "-01-01 00:00:00'";
@@ -71,14 +80,18 @@ class Admin
         } elseif ($cor === '') {
             if ($year !== '') {
                 if ($month !== '') {
-                    $sql = " sup_date " . ">= '" . $year . "-" . $month . "-01 00:00:00'" . " AND sup_date " . "<= '" . $year . "-" . $month . "-31 23:59:59'";
+                    $sql = " sup_date " . ">= '" . $year . "-" . $month . "-01 00:00:00'" . " AND sup_date " . "<= '" . $year . "-" . $month . "-" . $month_end . " 23:59:59'";
                     $where = ($userSql !== '') ? $userSql . $sql : $sql;
                 } else {
                     $sql = " sup_date " . ">= '" . $year . "-01-01 00:00:00'" . " AND sup_date " . "< '" . $year + 1 . "-01-01 00:00:00'";
                     $where = ($userSql !== '') ? $userSql . $sql : $sql;
                 }
             } else {
-                $where = ($userSql !== '') ? $userSql : '';
+                if ($userSql !== '') {
+                    $where = ' user_name LIKE ' . "'%" . $user_name . "%'";
+                } else {
+                    $where = '';
+                }
             }
         }
 
@@ -95,10 +108,19 @@ class Admin
         $col =
             'buy_sort, customer_no, sum_num, sum_price, buy_id, buy_date, ord_date, ord_flg';
         $userSql = ($buy_id !== '') ? ' buy_id LIKE ' . "'%" . $buy_id . "%'" . " AND " : '';
+        if ($month !== '') {
+            if ($month === '4' || $month === '6' || $month === '9' || $month === '11') {
+                $month_end = '30';
+            } elseif ($month === '2') {
+                $month_end = '29';
+            } else {
+                $month_end = '31';
+            }
+        }
         if ($cor !== '') {
             if ($year !== '') {
                 if ($month !== '') {
-                    $sql = " ord_flg = " . $cor . " AND buy_date " . ">= '" . $year . "-" . $month . "-01 00:00:00'" . " AND buy_date " . "<= '" . $year . "-" . $month . "-31 23:59:59'";
+                    $sql = " ord_flg = " . $cor . " AND buy_date " . ">= '" . $year . "-" . $month . "-01 00:00:00'" . " AND buy_date " . "<= '" . $year . "-" . $month . "-" . $month_end . " 23:59:59'";
                     $where = ($userSql !== '') ? $userSql . $sql : $sql;
                 } else {
                     $sql = " ord_flg = " . $cor . " AND buy_date " . ">= '" . $year . "-01-01 00:00:00'" . " AND buy_date " . "< '" . $year + 1 . "-01-01 00:00:00'";
@@ -111,14 +133,18 @@ class Admin
         } elseif ($cor === '') {
             if ($year !== '') {
                 if ($month !== '') {
-                    $sql = " buy_date " . ">= '" . $year . "-" . $month . "-01 00:00:00'" . " AND buy_date " . "<= '" . $year . "-" . $month . "-31 23:59:59'";
+                    $sql = " buy_date " . ">= '" . $year . "-" . $month . "-01 00:00:00'" . " AND buy_date " . "<= '" . $year . "-" . $month . "-" . $month_end . " 23:59:59'";
                     $where = ($userSql !== '') ? $userSql . $sql : $sql;
                 } else {
                     $sql = " buy_date " . ">= '" . $year . "-01-01 00:00:00'" . " AND buy_date " . "< '" . $year + 1 . "-01-01 00:00:00'";
                     $where = ($userSql !== '') ? $userSql . $sql : $sql;
                 }
             } else {
-                $where = ($userSql !== '') ? $userSql : '';
+                if ($userSql !== '') {
+                    $where = ' buy_id LIKE ' . "'%" . $buy_id . "%'";
+                } else {
+                    $where = '';
+                }
             }
         }
 
@@ -131,9 +157,9 @@ class Admin
 
     public function delMemberData($mem_id)
     {
-        $table = ' cart ';
+        $table = ' member ';
         $insData = ['delete_flg' => 1];
-        $where = ' mem_id= ?';
+        $where = ' mem_id = ? ';
         $arrWhereVal = [$mem_id];
 
         return $this->db->update($table, $insData, $where, $arrWhereVal, 'delete');
@@ -141,7 +167,7 @@ class Admin
 
     public function reMemberData($mem_id)
     {
-        $table = ' cart ';
+        $table = ' member ';
         $insData = ['delete_flg' => 0];
         $where = ' mem_id= ?';
         $arrWhereVal = [$mem_id];

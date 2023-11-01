@@ -286,7 +286,7 @@ class PDODatabase
                     . $table
                     . " SET "
                     . $preSt
-                    . ", delete_date = '' "
+                    . ", delete_date = now() "
                     . " WHERE "
                     . $where;
                 break;

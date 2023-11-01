@@ -41,8 +41,8 @@ if (isset($_SESSION['login_admin'])) {
     $sessionData = '';
 }
 
-$del_mem_id = (isset($_GET['del_mem_id']) === true && preg_match('/^\d+$/', $_GET['del_mem_id']) === 1) ? $_GET['del_mem_id'] : '';
-$re_mem_id = (isset($_GET['re_mem_id']) === true && preg_match('/^\d+$/', $_GET['re_mem_id']) === 1) ? $_GET['del_mem_id'] : '';
+$del_mem_id = (isset($_GET['del_mem_id']) === true) ? $_GET['del_mem_id'] : '';
+$re_mem_id = (isset($_GET['re_mem_id']) === true) ? $_GET['re_mem_id'] : '';
 $dl_mem = (isset($_GET['dl_mem']) === true) ? $_GET['dl_mem'] : '';
 
 if (isset($_GET['search']) === true) {
